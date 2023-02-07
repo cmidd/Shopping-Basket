@@ -1,0 +1,38 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Products Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Products</h1>
+</div>
+
+@if (Model.HasProducts)
+{
+    <div class="container">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td>@product.Info.Name</td>
+                        <td>@product.Info.Description</td>
+                        <td>&pound;@product.Info.Price.ToString("N")</td>
+                        <td>
+                            <a data-add-url="@product.AddToBasketUrl" class="btn btn-primary js-add-btn" role="button">Add to basket</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

@@ -1,0 +1,60 @@
+﻿@model BasketViewModel
+
+@{
+    ViewData["Title"] = "Basket Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Your basket</h1>
+</div>
+
+<div id="products-section" class="container" @(Model.HasProducts ? "" : "hidden")>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Info.Name</td>
+                    <td>@product.Info.Description</td>
+                    <td>&pound;@product.Info.Price.ToString("N")</td>
+                    <td>
+                        <a data-remove-url="@product.RemoveFromBasketUrl" data-price="@product.Info.Price" class="btn btn-primary js-remove-btn" role="button">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="original-total-section" class="container" @(Model.HasProducts ? "" : "hidden")>
+    <h2>Total: £<span id="original-total">@Model.GetOriginalTotalStr</span></h2>
+</div>
+
+<br/>
+
+<div id="voucher-input-section" class="container" @(Model.HasVoucher ? "hidden" : "")>
+    <label for="voucher" class="form-label">Voucher</label>
+    <div class="input-group">
+        <input type="text" id="voucher" name="voucher" class="form-input" placeholder="Type code here...">
+        <button type="button" id="apply-voucher" data-add-voucher-url="@Model.AddVoucherUrl" class="btn btn-secondary">Apply</button>
+    </div>
+</div>
+
+<div id="voucher-applied-section" class="container" @(Model.HasVoucher ? "" : "hidden")>
+    <div class="alert alert-success" id="voucher-name">@(Model.Voucher?.Name ?? "")</div>
+    <button type="button" id="remove-voucher" data-remove-voucher-url="@Model.RemoveVoucherUrl" class="btn btn-secondary">Remove</button>
+</div>
+
+<br/>
+
+<div id="current-total-section" class="container" @(Model.HasVoucher ? "" : "hidden")>
+    <h2 style="color:darkgreen">Total after discount: £<span id="current-total">@Model.GetCurrentTotalStr</span></h2>
+</div>
