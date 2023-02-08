@@ -36,3 +36,9 @@ The following tools are prerequisites to developing the website:
 ## Notes
 
 - API endpoints are available via /swagger
+
+## Possible improvements
+
+My knowledge of testing frameworks and implementing unit/integration tests needs improvement, so I would have preferred to have more complete testing. 
+
+The front-end is basic Bootstrap, so I would have ideally used a more modern framework such as Vue.js, and I would have liked to provide more front-end validation feedback. 
