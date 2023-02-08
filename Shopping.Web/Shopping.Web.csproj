@@ -4,8 +4,8 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Shopping</RootNamespace>
-    <AssemblyName>Shopping</AssemblyName>
+    <RootNamespace>Shopping.Web</RootNamespace>
+    <AssemblyName>Shopping.Web</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
